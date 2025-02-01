@@ -14,7 +14,7 @@ import java.util.List;
 
 public class Kata63 {
     public static void main(String[] args) {
-        Solution63 solution63 = new Solution63();
+        Solution63B solution63 = new Solution63B();
 
         System.out.println(solution63.solution("100", "2345"));
         System.out.println(solution63.solution("100", "203045"));
@@ -24,7 +24,35 @@ public class Kata63 {
     }
 }
 
-class Solution63 {
+class Solution63B {
+    public String solution(String X, String Y) {
+        int[] xArray = new int[10];
+        int[] yArray = new int[10];
+
+        for (int i = 0; i<X.length(); i++)
+            xArray[Integer.parseInt(String.valueOf(X.charAt(i)))]++;
+
+        for (int i = 0; i<Y.length(); i++)
+            yArray[Integer.parseInt(String.valueOf(Y.charAt(i)))]++;
+
+        StringBuilder result = new StringBuilder();
+        for (int i = 9; i >= 0; i--) {
+            int count = Math.min(xArray[i], yArray[i]);
+            for (int i1 = 0; i1 < count; i1++) {
+                result.append(i);
+            }
+        }
+
+        if (result.length() == 0) return "-1";
+        if (String.valueOf(result.charAt(0)).equals("0")) return "0";
+
+        return result.toString();
+    }
+}
+
+
+// 시간을 많이 잡아먹음
+class Solution63A {
     public String solution(String X, String Y) {
         List<Character> xChar = new ArrayList<>();
         for (char c : X.toCharArray()) {
