@@ -28,12 +28,14 @@ class Solution65 {
 
         int result = 0;
         while (!list.isEmpty()) {
-            result++;
             char c = list.get(0);
             int cCount = 1;
             int aCount = 0;
-            for (int i = 1; i < list.size(); i++) {
-                if (c == list.get(i)) {
+
+            int i = 1;
+            while (i < list.size()) {
+                Character character = list.get(i);
+                if (c == character) {
                     list.remove(i);
                     cCount++;
                 } else {
@@ -45,6 +47,7 @@ class Solution65 {
                 }
             }
             list.remove(0);
+            result++;
         }
 
         return result;
